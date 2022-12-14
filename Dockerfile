@@ -8,7 +8,7 @@ COPY ./app /app
 COPY ./scripts /scripts
 
 WORKDIR /app
-EXPOSE 8000
+EXPOSE 8100
 
 
 RUN python -m venv /py && \

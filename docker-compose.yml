@@ -5,6 +5,9 @@ services:
     build:
       context: .
 
+    ports:
+      - 8100:8100
+
     volumes:
       - ./app:/app
       - static-data:/vol/web
