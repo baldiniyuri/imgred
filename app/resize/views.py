@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 from resize.models import Resize
 from resize.serializers import ResizeSerializers
-
+from resize.resize_function import Scheduling_Queue
 
 
 class ResizeImagesView(APIView):
@@ -23,8 +23,4 @@ class ResizeImagesView(APIView):
         image_to_resize = request.data['image_to_resize'] 
         Resize.objects.create(image_id_from_request=image_id_from_request, user_id_from_request=user_id_from_request, image_to_resize=image_to_resize)
 
-        return Response( status=status.HTTP_201_CREATED)
-
-
-    def get(self, request):
-        ...
+        return Response(status=status.HTTP_201_CREATED)

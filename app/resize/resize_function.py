@@ -6,8 +6,8 @@ URL = 'http://127.0.0.1:8000/api/images/'
 
 def Resize_Image(image_to_resize):
     image = Image.open(image_to_resize)
-
-    return image.resize(384,384)
+    image = image.resize((384,384))
+    return image
 
 
 def Search_for_images():
@@ -42,5 +42,5 @@ def Scheduling_Queue():
 
     if not response:
         ErrorLog.objects.create(image_id=response.data.id)
-        
+
         Resize.objects.get(id=response.data.id).delete()
