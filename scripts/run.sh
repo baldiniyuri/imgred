@@ -13,5 +13,8 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver 0.0.0.0:8100
 
+
+
+
 uwsgi --socket :9100 --workers 4 --master --enable-threads --module app.wsgi
 

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_q',
     'rest_framework',
     'resize'
 
@@ -154,3 +155,15 @@ REST_FRAMEWORK = {
         'user': os.environ.get('THROTTLE_USER')
     }
 }
+
+
+Q_CLUSTER = {
+    'orm': 'default',  
+    'workers': 4,
+    'timeout': 30,
+    'retry': 60,
+    'queue_limit': 50,
+    'bulk': 10,
+}
+
+

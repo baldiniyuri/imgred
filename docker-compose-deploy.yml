@@ -15,6 +15,7 @@ services:
       - SECRET_KEY=${SECRET_KEY}
       - THROTTLE_ANON=${THROTTLE_ANON}
       - THROTTLE_USER=${THROTTLE_USER}
+      - MAIN_APP_URL=${MAIN_APP_URL}
     depends_on:
       - db
 

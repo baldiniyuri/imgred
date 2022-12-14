@@ -21,6 +21,7 @@ services:
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - THROTTLE_ANON=${THROTTLE_ANON}
       - THROTTLE_USER=${THROTTLE_USER}
+      - MAIN_APP_URL=${MAIN_APP_URL}
     depends_on:
       - db
 
@@ -31,6 +32,7 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
 
+    
 volumes:
   postgres-data:
   static-data:

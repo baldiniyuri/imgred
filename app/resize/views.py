@@ -24,3 +24,9 @@ class ResizeImagesView(APIView):
         Resize.objects.create(image_id_from_request=image_id_from_request, user_id_from_request=user_id_from_request, image_to_resize=image_to_resize)
 
         return Response(status=status.HTTP_201_CREATED)
+
+
+    def get(self, request):
+        response = Scheduling_Queue()
+        print(response)
+        return Response(status=status.HTTP_200_OK)

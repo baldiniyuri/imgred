@@ -1,8 +1,8 @@
 from PIL import Image
 from resize.models import Resize, ErrorLog
-import requests
+import requests, os
 
-URL = 'http://127.0.0.1:8000/api/images/'
+URL = os.getenv('MAIN_APP_URL')
 
 def Resize_Image(image_to_resize):
     image = Image.open(image_to_resize)
@@ -19,7 +19,7 @@ def Search_for_images():
             image = Resize.objects.get(id=objects.id)
             resized_to_resize = image.image_to_resize
             resized_image = Resize_Image(resized_to_resize)
-            returning_data = {"id":image.image_id_from_request, "user_id": image.user_id_from_request, "image": resized_image}
+            returning_data = {"image_id":image.image_id_from_request, "user_id": image.user_id_from_request, "image": resized_image}
             return returning_data
 
 
@@ -27,14 +27,14 @@ def Put_new_image():
 
     data = Search_for_images()
 
-    response = requests.put(URL, data=data)
+    try :
+        response = requests.put(URL, data=data)
 
-    if response.status_code == 200:
-        Resize.objects.get(id=data.id).delete()
-        return True
-
-    
-    return False, data
+        if response.status_code == 200:
+            Resize.objects.get(id=data.id).delete()
+            return True
+    except:
+        return False, data
 
 
 def Scheduling_Queue():
