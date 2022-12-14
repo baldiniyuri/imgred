@@ -56,6 +56,7 @@ docker-compose -f docker-compose.yml run --rm app sh -c "python manage.py qclust
 
 ### Post api/images-to-resize/
 
+Porta 8100
 ```Request post para redimencionar imagens.
 
 Post Multipart Form
