@@ -2,9 +2,9 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
-from resize.models import Resize
-from resize.serializers import ResizeSerializers
-from resize.resize_function import Scheduling_Queue
+from resize.models import Resize, ErrorLog
+from resize.serializers import ResizeSerializers, ErrorLogSerializers
+
 
 
 class ResizeImagesView(APIView):
@@ -27,6 +27,9 @@ class ResizeImagesView(APIView):
 
 
     def get(self, request):
-        response = Scheduling_Queue()
-        print(response)
-        return Response(status=status.HTTP_200_OK)
+        
+        logs = ErrorLog.objects.all()
+
+        serializers = ErrorLogSerializers(logs, many=True)
+
+        return Response(serializers.data, status=status.HTTP_200_OK)

@@ -8,3 +8,7 @@ class ResizeSerializers(serializers.Serializer):
     user_id_from_request = serializers.IntegerField()
 
 
+class ErrorLogSerializers(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    image_id : serializers.IntegerField()
+    error_date = serializers.DateTimeField()
